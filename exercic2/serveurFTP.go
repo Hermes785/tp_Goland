@@ -13,10 +13,22 @@ import (
 )
 
 const ftpServer = "localhost:21" // Adresse du serveur FTP
-const ftpUser = "hermes"         // Nom d'utilisateur du serveur FTP
-const ftpPass = "golang"         // Mot de passe du serveur FTP
+// const ftpUser = "hermes"         // Nom d'utilisateur du serveur FTP
+// const ftpPass = "golang"         // Mot de passe du serveur FTP
+type utiliateurConfig struct {
+	ftpuser string
+	ftppass string
+}
 
 func ServerFTP() {
+	var u utiliateurConfig
+
+	fmt.Println("veuillez entrer votre nom utiliateur")
+	fmt.Scan(&u.ftpuser)
+
+	fmt.Println("veuillez entrer votre password")
+	fmt.Scan(&u.ftppass)
+
 	// Connexion au serveur FTP en utilisant EPSV par défaut
 	c, err := ftp.Dial(ftpServer, ftp.DialWithTimeout(5*time.Second))
 	if err != nil {
@@ -25,7 +37,7 @@ func ServerFTP() {
 	defer c.Quit() // Déconnexion du serveur FTP à la fin de la fonction
 
 	// Authentification auprès du serveur FTP
-	err = c.Login(ftpUser, ftpPass)
+	err = c.Login(u.ftpuser, u.ftppass)
 	if err != nil {
 		log.Fatal(err)
 	}
