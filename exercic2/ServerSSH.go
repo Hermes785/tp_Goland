@@ -12,6 +12,7 @@ import (
 	issh "github.com/jlandowner/go-interactive-ssh"
 )
 
+// defimition de notre struture
 type configuration struct {
 	host     string
 	user     string

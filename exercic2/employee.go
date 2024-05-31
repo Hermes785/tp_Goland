@@ -269,6 +269,27 @@ func ExporteExcel() {
 		fmt.Println("-->Erreur lors de la création de la feuille :", err)
 		return
 	}
+	// Crée un nouveau style avec une couleur de fond et une taille de police
+	style := &excelize.Style{
+		Fill: excelize.Fill{
+			Type:    "pattern",
+			Color:   []string{"#FFFF11"},
+			Pattern: 1,
+		},
+		Font: &excelize.Font{ // Note l'usage du pointeur
+			Bold: true,
+		},
+		Alignment: &excelize.Alignment{
+			Horizontal: "center",
+		},
+	}
+
+	styleID, err := f.NewStyle(style)
+
+	if err != nil {
+		panic(err)
+	}
+
 	// Ajout des en-têtes dans le fichier Excel
 	//pour ce faire j'ai creé deux tableau un pour les valeurs du header et un autre
 	// pour les cellule puis j'ai fait une boucle for pour le remplir
@@ -277,6 +298,7 @@ func ExporteExcel() {
 	cell := [5]string{"A", "B", "C", "D", "E"}
 	for i := 0; i < len(headerCellValu); i++ {
 		f.SetCellValue("Sheet1", fmt.Sprintf("%s"+"%d", cell[i], rowheader), headerCellValu[i])
+		f.SetCellStyle("sheet1", fmt.Sprintf("%s"+"%d", cell[i], rowheader), fmt.Sprintf("%s"+"%d", cell[i], rowheader), styleID)
 	}
 	row := 2 // Initialise la ligne de début d'insertion
 	idd := 0 // Initialise l'identifiant pour eviter que lorsqu'on suprime un élément dans la table les id soit en desorde lors de l'affichage
