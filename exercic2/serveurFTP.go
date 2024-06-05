@@ -12,9 +12,9 @@ import (
 	"github.com/jlaffaye/ftp"
 )
 
-const ftpServer = "localhost:21" // Adresse du serveur FTP
-// const ftpUser = "hermes"         // Nom d'utilisateur du serveur FTP
-// const ftpPass = "golang"         // Mot de passe du serveur FTP
+const ftpServer = "localhost:21"
+
+// definition de notre structure
 type utiliateurConfig struct {
 	ftpuser string
 	ftppass string

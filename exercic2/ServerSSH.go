@@ -1,6 +1,9 @@
 package exercice2
 
-// pour la realisation de ce code j'ai  tout simplement regardé la documentation(suivre le lien golang.org/x/crypto/ssh pour voir) et appliqué  ce qui etait dessus en modifiant ce qu'il avait à modifier  golang.org/x/crypto/ssh
+/*
+ pour la realisation de ce code j'ai  tout simplement regardé la documentation(suivre le lien golang.org/x/crypto/ssh pour voir)
+et appliqué  ce qui etait dessus en modifiant ce qu'il avait à modifier
+*/
 import (
 	"context"
 	"fmt"
@@ -20,7 +23,7 @@ type configuration struct {
 }
 
 func ServerSSh() {
-	//ici je demane a l'utilsateur d'entré les information de sa Vm à savoir son adresse ip, son usename et son password
+	//ici je demande à l'utilsateur d'entré les information de sa Vm à savoir son adresse ip, son usename et son password
 	var c configuration
 	ctx := context.Background()
 	fmt.Println("Entrer l'Adresse IP de la machine virtuelle Ubuntu:")
@@ -32,7 +35,6 @@ func ServerSSh() {
 
 	// une fois cela recuperé  je teste la connection
 
-	// Informations d'authentification
 	config := &ssh.ClientConfig{
 		User: c.user,
 
@@ -42,9 +44,9 @@ func ServerSSh() {
 		// Ignorer les vérifications de clé de serveur SSH (à utiliser avec prudence)
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
 	}
-
 	// Établissement de la connexion SSH
 	client := issh.NewClient(config, c.host, "22", []issh.Prompt{issh.DefaultPrompt})
+
 	// pour monter que cela passe vraiment j'execute quelque commande avant d'affiché  le "connexion à la VM reusssi si tout ce passe bien biensur"
 	err := client.Run(ctx, []*issh.Command{
 		issh.CheckUser(c.user),
