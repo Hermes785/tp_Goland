@@ -8,13 +8,13 @@ j'ai separé mon code en 3 fichiers
 */
 
 import (
-	exercice2 "exercice2/exercic2"
+	Employes "employes/Gestion-Employes"
 	"fmt"
 	"strings"
 )
 
 func main() {
-	exercice2.ConnectDB()
+	Employes.ConnectDB()
 	for {
 		var reponse int
 		fmt.Println("Menu:")
@@ -39,56 +39,56 @@ func main() {
 			println("vous avez choisi 1 - Ajouter un employé")
 			fmt.Println(strings.Repeat("-", 45))
 
-			exercice2.AddEmployee()
+			Employes.AddEmployee()
 
 		case 2:
 			fmt.Println(strings.Repeat("-", 45))
 			println("vous avez choisi 2-Modifier un employés")
 			fmt.Println(strings.Repeat("-", 45))
 
-			exercice2.UpdatEmployee()
+			Employes.UpdatEmployee()
 
 		case 3:
 			fmt.Println(strings.Repeat("-", 45))
 			println("vous avez choisi 3- suprimer un employés")
 			fmt.Println(strings.Repeat("-", 45))
 
-			exercice2.DeleteEmployee()
+			Employes.DeleteEmployee()
 
 		case 4:
 			fmt.Println(strings.Repeat("-", 55))
 			println("vous avez choisi 4 - Afficher la liste des employés")
 			fmt.Println(strings.Repeat("-", 55))
 
-			exercice2.ListAllEmployees()
+			Employes.ListAllEmployees()
 
 		case 5:
 			fmt.Println(strings.Repeat("-", 75))
 			println("vous avez choisi 5 - Exporté  la liste d'employé dans un fichier excel")
 			fmt.Println(strings.Repeat("-", 75))
 
-			exercice2.ExporteExcel()
+			Employes.ExporteExcel()
 
 		case 6:
 			fmt.Println(strings.Repeat("-", 55))
 			println("vous avez choisi 6- Se connecter à un serveur ftp")
 			fmt.Println(strings.Repeat("-", 55))
 
-			exercice2.ServerFTP()
+			Employes.ServerFTP()
 
 		case 7:
 			fmt.Println(strings.Repeat("-", 85))
 			println("vous avez choisit 7- Lancer un serveur http (avec une page web simple connecté à une route")
 			fmt.Println(strings.Repeat("-", 85))
 
-			exercice2.ServerHTTP()
+			Employes.ServerHTTP()
 
 		case 8:
 			fmt.Println(strings.Repeat("-", 55))
 			println("vous avez choisi 8-  Se connecter à l'une de vos VM en ssh")
 			fmt.Println(strings.Repeat("-", 55))
 
-			exercice2.ServerSSh()
+			Employes.ServerSSh()
 
 			/*
 				case 9:
@@ -115,13 +115,14 @@ func main() {
 			switch rep3 {
 
 			case 1:
+				fmt.Println(" ---> Vous avez choisit 1-Oui")
 				fmt.Println(strings.Repeat("-", 10))
 				fmt.Println("Good bye")
 				fmt.Println(strings.Repeat("-", 10))
 				return
 
 			case 2:
-				fmt.Println(" ---> Vous avez choisit 2")
+				fmt.Println(" ---> Vous avez choisit 2-Non")
 				main()
 
 			}
